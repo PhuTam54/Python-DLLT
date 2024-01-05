@@ -140,6 +140,14 @@ def add_video(playlist):
 	playlist.videos.append(new_video)
 	return playlist
 
+def delete_video(playlist):
+	print_videos(playlist.videos)
+	total = len(playlist.videos)
+	choice = select_in_range("Select an video (1-" + str(total) +"): ", 1, total)
+	del playlist.videos[choice-1]
+	print("Succesfully delete a video !!!")
+	return playlist
+
 def new_playlist(playlist):
 	print_playlist(playlist)
 	print("\nUpdate playlist???")
@@ -197,7 +205,7 @@ def main():
 			playlist = new_playlist(playlist)
 			input("\nPress Enter to continue.\n")	
 		elif choice == 6:
-			playlist = new_playlist(playlist)
+			playlist = delete_video(playlist)
 			input("\nPress Enter to continue.\n")			
 		elif choice == 7:
 			write_playlist_txt(playlist)
